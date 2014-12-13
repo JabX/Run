@@ -1,6 +1,8 @@
 Run.v12.suo
 Run.suo
 packages
-Run/bin
-Run/obj
-Run/Debug
+Run-SFML/bin
+Run-SFML/obj
+Run-SFML/Debug
+Run-Shared/bin
+Run-Shared/obj
