@@ -39,6 +39,7 @@
     <Compile Include="Actions\FieldActions\CreateProjectile.cs" />
     <Compile Include="Actions\FieldActions\Generate.cs" />
     <Compile Include="Actions\FieldActions\MoveField.cs" />
+    <Compile Include="Actions\FieldActions\UpdateScore.cs" />
     <Compile Include="Actions\SpriteAction.cs" />
     <Compile Include="Actions\SpriteActions\FireProjectile.cs" />
     <Compile Include="Actions\SpriteActions\Jump.cs" />

@@ -3,7 +3,6 @@ using SFML.Window;
 
 using Run;
 using Run.Sprites;
-using Run.Actions.FieldActions;
 
 namespace Run_SFML
 {
@@ -13,20 +12,24 @@ namespace Run_SFML
         public Field field { get; private set; }
 	    public int frameSkip { get; set; }
 
+        private Font font = new Font("../../../font.ttf");
+
         public View(RenderWindow context)
         {
             this.context = context;
             field = new Field();
             frameSkip = 0;
-
-            field.addSprite(new Player());
-            field.addAction(new MoveField());
-            field.addAction(new Generate());
         }
 
 	    public void draw()
         {
             context.Clear(Color.Black);
+
+            var score = new Text(field.score.ToString(), font);
+            FloatRect textRect = score.GetLocalBounds();
+            score.Origin = new Vector2f(textRect.Left + textRect.Width, textRect.Top);
+            score.Position = new Vector2f(Config.WindowWidth-10,10);
+            context.Draw(score);
 
 	        foreach (var sprite in field.sprites)
 	        {

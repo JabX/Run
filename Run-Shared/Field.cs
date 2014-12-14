@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Run.Actions;
 using Run.Actions.SpriteActions;
+using Run.Actions.FieldActions;
 using Run.Sprites;
 
 namespace Run
@@ -14,6 +15,7 @@ namespace Run
 	    public List<Sprite> sprites { get; private set; }
 	    public List<FieldAction> actions { get; private set; }
 
+        public uint score { get; set; }
         public uint speed { get; private set; }
 
         public CollisionHandler collisionHandler { get; set; }
@@ -42,6 +44,11 @@ namespace Run
                 }
                 sequences.Add(complexity.Key, sameCTerrains);
             }
+
+            addSprite(new Player());
+            addAction(new MoveField());
+            addAction(new Generate());
+            addAction(new UpdateScore());
         }
 	
 	    public List<TerrainGrid> getSequence(int complexity)
@@ -208,11 +215,6 @@ namespace Run
 			        if (indexDifference > 0)
 				        collisionHandler.collide(sprites[index1], sprites[index2]);
 		        }
-        }
-
-        public int updateScore()
-        {
-            return 0;
         }
     }
 }
