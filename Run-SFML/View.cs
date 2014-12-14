@@ -27,8 +27,8 @@ namespace Run_SFML
 
             var score = new Text(field.score.ToString(), font);
             FloatRect textRect = score.GetLocalBounds();
-            score.Origin = new Vector2f(textRect.Left + textRect.Width, textRect.Top);
-            score.Position = new Vector2f(Config.WindowWidth-10,10);
+            score.Origin = new Vector2f(textRect.Left + textRect.Width/2, textRect.Top);
+            score.Position = new Vector2f(Config.WindowWidth/2,10);
             context.Draw(score);
 
 	        foreach (var sprite in field.sprites)

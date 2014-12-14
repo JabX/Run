@@ -11,7 +11,7 @@
         public static uint Frameskip = ViewFramerate / Framerate;
 
         public static uint BaseSpeed = 2;
-        public static uint MaxSpeed = 2;
+        public static uint MaxSpeed = 3;
 
         public static uint ProjectileSpeed = 8;
 

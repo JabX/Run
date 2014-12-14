@@ -12,7 +12,10 @@ namespace Run.Colliders
 
         public override void collide(Sprite sp1, Sprite sp2, Field target)
         {
-	        target.deleteSprite(sp1);
+            if (sp1.type == SpriteType.Obstacle)
+	            target.deleteSprite(sp2);
+            else
+                target.deleteSprite(sp1);   
             target.isGameRunning = false;
         }
     }

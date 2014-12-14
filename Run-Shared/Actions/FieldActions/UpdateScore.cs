@@ -4,7 +4,8 @@
     {
         public override void execute()
         {
-            target.score += 7;
+            target.score += (uint)(7 * time * target.speed / 100);
+            incTime();
         }
     }
 }
