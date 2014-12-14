@@ -1,6 +1,9 @@
 Run.v12.suo
 Run.suo
 packages
+Run-CocosSharp/bin
+Run-CocosSharp/obj
+Run-CocosSharp/Debug
 Run-SFML/bin
 Run-SFML/obj
 Run-SFML/Debug
