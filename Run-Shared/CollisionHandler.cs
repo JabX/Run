@@ -15,6 +15,7 @@ namespace Run
             this.target = target;
             colliders = new List<Collider>();
             colliders.Add(new PlayerObstacle());
+            colliders.Add(new PlayerProjectile());
         }
 
         private Collider getCollider(Sprite sp1, Sprite sp2)
