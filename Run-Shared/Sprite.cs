@@ -17,7 +17,7 @@ namespace Run
         public SpriteType type { get; private set; }
         public List<SpriteAction> actions { get; private set; }
 
-        public Sprite(uint width, uint height, SpriteType type, int x = 0, int y = 0, State state = State.BLUE)
+        public Sprite(uint width, uint height, SpriteType type, int x = 0, int y = 0, State state = State.Blue)
         {
             this.width = width;
             this.height = height;

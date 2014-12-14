@@ -9,7 +9,7 @@ namespace Run.Actions.FieldActions
         private int y;
         private Direction direction;
 
-        public CreateProjectile(int x, int y, Direction direction = Direction.RIGHT) : base(1)
+        public CreateProjectile(int x, int y, Direction direction = Direction.Right) : base(1)
         {
             this.x = x;
             this.y = y; 
@@ -19,13 +19,13 @@ namespace Run.Actions.FieldActions
         public override void execute()
         {
             Way way;
-            if (direction == Direction.UP || direction == Direction.DOWN)
-                way = Way.VERTICAL;
+            if (direction == Direction.Up || direction == Direction.Down)
+                way = Way.Vertical;
             else
-                way = Way.HORIZONTAL;
+                way = Way.Horizontal;
 
 	        Sprite newP = new Projectile(x, y, way);
-	        SpriteAction move = new MoveSprite(Config.PROJECTILE_SPEED, direction);
+	        SpriteAction move = new MoveSprite(Config.ProjectileSpeed, direction);
 	        newP.addAction(move);
 
 	        // Setting up manually the next projectile position. 
@@ -35,17 +35,17 @@ namespace Run.Actions.FieldActions
 
 	        switch (direction)
 	        {
-	        case Direction.DOWN:
-		        ny -= (int)Config.PROJECTILE_SPEED;
+	        case Direction.Down:
+		        ny -= (int)Config.ProjectileSpeed;
 		        break;
-	        case Direction.UP:
-		        ny += (int)Config.PROJECTILE_SPEED;
+	        case Direction.Up:
+                ny += (int)Config.ProjectileSpeed;
 		        break;
-	        case Direction.LEFT:
-		        nx -= (int)Config.PROJECTILE_SPEED;
+	        case Direction.Left:
+                nx -= (int)Config.ProjectileSpeed;
 		        break;
-	        case Direction.RIGHT:
-		        nx += (int)Config.PROJECTILE_SPEED;
+	        case Direction.Right:
+                nx += (int)Config.ProjectileSpeed;
 		        break;
 	        }
             nx -= (int)target.speed;

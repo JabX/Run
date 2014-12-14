@@ -16,31 +16,35 @@ namespace Run
 
         // public CollisionHandler collisionHandler { get; set; }
 
-        public List<List<TerrainGrid>> sequences { get; set; }
+        public Dictionary<uint, List<List<TerrainGrid>>> sequences { get; set; }
 
 	    public Field()
         {
-            speed = Config.BASE_SPEED;
+            speed = Config.BaseSpeed;
             sprites = new List<Sprite>();
             actions = new List<FieldAction>();
             // collisionHandler = new CollisionHandler(this);
 
-            sequences = new List<List<TerrainGrid>>();
+            sequences = new Dictionary<uint, List<List<TerrainGrid>>>();
 
             var terrainData = Terrain.get();
             foreach (var complexity in terrainData)
-                foreach(var terrain in complexity.Value)
+            {
+                var sameCTerrains = new List<List<TerrainGrid>>();
+                foreach (var terrain in complexity.Value)
                 {
                     var seqTest = new TerrainSequence(terrain);
-                    sequences.Add(seqTest.blockList);
+                    sameCTerrains.Add(seqTest.blockList);
                 }
+                sequences.Add(complexity.Key, sameCTerrains);
+            }
         }
 	
 	    public List<TerrainGrid> getSequence(int complexity)
         {
             var rand = new Random();
             int c = (complexity > 3) ? 3 : complexity;
-            return sequences[rand.Next(0, (c + 1) * (int)Config.SEQ_C0_COUNT)];
+            return sequences[(uint)rand.Next(0, (c + 1))][rand.Next(0, sequences.Values.First().Count)];
         }
 
         public Sprite MakeRegularBlock(TerrainGrid block)
@@ -50,27 +54,27 @@ namespace Run
 	        uint height = (uint)block.Count;
             uint width = (uint)block.Values.First().Count();
 
-	        Sprite output = new Obstacle(width, height, x+(int)Config.WINDOW_BLOCK_WIDTH, y);
+	        Sprite output = new Obstacle(width, height, x+(int)Config.WindowBlockWidth, y);
 
             char fireDirection = block.Values.First().Values.First().Item1;
 	        if (fireDirection != 'X')
 	        {
-		        output.state = State.RED;
+		        output.state = State.Red;
 
-                Direction direction = Direction.UP;
+                Direction direction = Direction.Up;
 		        switch (fireDirection)
 		        {
 		            case 'D':
-			            direction = Direction.DOWN;
+			            direction = Direction.Down;
 			            break;
 		            case 'L':
-			            direction = Direction.LEFT;
+			            direction = Direction.Left;
 			            break;
 		            case 'R':
-			            direction = Direction.RIGHT;
+			            direction = Direction.Right;
 			            break;
 		        }
-		        SpriteAction fire = new FireProjectile(direction, Config.FRAMERATE/2);
+		        SpriteAction fire = new FireProjectile(direction, Config.Framerate/2);
 		        output.addAction(fire);
 	        }
 
@@ -118,10 +122,10 @@ namespace Run
 		        }
 
 	        if (isDirectionUp)
-		        direction = Direction.UP;
+		        direction = Direction.Up;
 	        else
 	        {
-		        direction = Direction.RIGHT;
+		        direction = Direction.Right;
                 foreach (var col in block.Values.First())
                     if (col.Value.Item1 == '+')
                         loopTime++;
@@ -146,8 +150,8 @@ namespace Run
         {
             sprites.RemoveAll(sprite => 
                                 sprite.x + sprite.width < -10
-                            ||  sprite.x > Config.WINDOW_BLOCK_WIDTH + Config.SEQUENCE_SIZE + 10
-                            ||  sprite.y > Config.WINDOW_BLOCK_HEIGHT + 5
+                            ||  sprite.x > Config.WindowBlockWidth + Config.SequenceWidth + 10
+                            ||  sprite.y > Config.WindowBlockHeight + 5
                             ||  sprite.y < -5);
         }
 

@@ -30,44 +30,44 @@ namespace Run_SFML
 
 	        foreach (var sprite in field.sprites)
 	        {
-		        float width = (float)sprite.width * Config.BLOCKSIZE;
-		        float height = (float)sprite.height * Config.BLOCKSIZE;
+		        float width = (float)sprite.width * Config.Blocksize;
+		        float height = (float)sprite.height * Config.Blocksize;
 
 		        // Our block origin is bottom-left corner and SMFL's is top-left.
-		        float x = (sprite.x + (sprite.nx - sprite.x) * (float)frameSkip / Config.FRAMESKIP) * Config.BLOCKSIZE;
-		        float y = context.Size.Y - (sprite.y + (sprite.ny - sprite.y) * (float)frameSkip / Config.FRAMESKIP) * Config.BLOCKSIZE - height;
+		        float x = (sprite.x + (sprite.nx - sprite.x) * (float)frameSkip / Config.Frameskip) * Config.Blocksize;
+		        float y = context.Size.Y - (sprite.y + (sprite.ny - sprite.y) * (float)frameSkip / Config.Frameskip) * Config.Blocksize - height;
 
 		        var shape = new RectangleShape(new Vector2f(width,height));
 		        shape.Position = new Vector2f(x,y);
 		        switch (sprite.state)
 		        {
-		        case State.BLUE:
-			        shape.FillColor = Color.Blue;
-			        break;
-		        case State.GREEN:
-			        shape.FillColor = Color.Green;
-			        break;
-		        case State.RED:
-			        shape.FillColor = Color.Red;
-                    break;
-                case State.YELLOW:
-                    shape.FillColor = Color.Yellow;
-                    break;
+		            case State.Blue:
+			            shape.FillColor = Color.Blue;
+			            break;
+                    case State.Green:
+			            shape.FillColor = Color.Green;
+			            break;
+		            case State.Red:
+			            shape.FillColor = Color.Red;
+                        break;
+                    case State.Yellow:
+                        shape.FillColor = Color.Yellow;
+                        break;
                 }
                 
-                if(sprite.type == SpriteType.PROJECTILE)
+                if(sprite.type == SpriteType.Projectile)
                 {
                     var projectile = (Projectile)sprite;
 
-                    if(projectile.way == Way.HORIZONTAL)
+                    if(projectile.way == Way.Horizontal)
                     {
                         shape.Size = new Vector2f(shape.Size.X, shape.Size.Y / 4);
-			            shape.Position = new Vector2f(shape.Position.X, shape.Position.Y + 3 * Config.BLOCKSIZE / 8);
+			            shape.Position = new Vector2f(shape.Position.X, shape.Position.Y + 3 * Config.Blocksize / 8);
                     }
                     else
                     {
                         shape.Size = new Vector2f(shape.Size.X / 4, shape.Size.Y);
-			            shape.Position = new Vector2f(shape.Position.X + 3 * Config.BLOCKSIZE / 8, shape.Position.Y);
+			            shape.Position = new Vector2f(shape.Position.X + 3 * Config.Blocksize / 8, shape.Position.Y);
                     }
                 }
 			    

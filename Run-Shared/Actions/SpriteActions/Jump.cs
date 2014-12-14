@@ -4,7 +4,7 @@
     {
         private int height;
 
-	    public Jump(int height = 4) : base((int)Config.FRAMERATE/3)
+	    public Jump(int height = 4) : base((int)Config.Framerate/3)
         {
             this.height = height;
         }

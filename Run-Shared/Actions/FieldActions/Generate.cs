@@ -34,15 +34,15 @@ namespace Run.Actions.FieldActions
             target.deleteOutOfBoundSprites();
 
             blockCount += target.speed;
-            if (blockCount >= Config.SEQUENCE_SIZE)
+            if (blockCount >= Config.SequenceWidth)
                 blockCount = 0;
 
             incTime();
 
-            if (time % Config.COMPLEXITY_INC_TIME == 0)
+            if (time % Config.ComplexityIncTime == 0)
                 complexity++;
 
-            if (time % Config.SPEED_INC_TIME == 0 && target.speed < Config.MAX_SPEED)
+            if (time % Config.SpeedIncTime == 0 && target.speed < Config.MaxSpeed)
                 target.incSpeed();
         }
     }

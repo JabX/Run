@@ -7,7 +7,7 @@ namespace Run.Actions.SpriteActions
         private uint fireRate;
         private Direction direction;
 
-        public FireProjectile(Direction direction = Direction.RIGHT, uint fireRate = 0) : base((fireRate == 0) ? 1 : -1)
+        public FireProjectile(Direction direction = Direction.Right, uint fireRate = 0) : base((fireRate == 0) ? 1 : -1)
         {
             this.direction = direction;
             this.fireRate = fireRate;

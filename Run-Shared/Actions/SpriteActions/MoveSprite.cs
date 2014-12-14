@@ -19,17 +19,17 @@
 	        {
 		        switch (direction)
 		        {
-		        case Direction.DOWN:
-			        direction = Direction.UP;
+		        case Direction.Down:
+			        direction = Direction.Up;
 			        break;
-		        case Direction.UP:
-			        direction = Direction.DOWN;
+		        case Direction.Up:
+			        direction = Direction.Down;
 			        break;
-		        case Direction.LEFT:
-			        direction = Direction.RIGHT;
+		        case Direction.Left:
+			        direction = Direction.Right;
 			        break;
-		        case Direction.RIGHT:
-			        direction = Direction.LEFT;
+		        case Direction.Right:
+			        direction = Direction.Left;
 			        break;
 		        }
 	        }
@@ -39,16 +39,16 @@
 
 	        switch (direction)
 	        {
-	        case Direction.DOWN:
+	        case Direction.Down:
 		        newY -= (int)speed;
 		        break;
-	        case Direction.UP:
+	        case Direction.Up:
 		        newY += (int)speed;
 		        break;
-	        case Direction.LEFT:
+	        case Direction.Left:
 		        newX -= (int)speed;
 		        break;
-	        case Direction.RIGHT:
+	        case Direction.Right:
 		        newX += (int)speed;
 		        break;
 	        }

@@ -23,7 +23,7 @@ namespace Run_SFML
 
         static void OnKeyPressed(object sender, KeyEventArgs e)
         {
-            var player = mainView.field.sprites.Where(sp => sp.type == SpriteType.PLAYER).FirstOrDefault();
+            var player = mainView.field.sprites.Where(sp => sp.type == SpriteType.Player).FirstOrDefault();
 
             // Jump
 			if (e.Code == Keyboard.Key.Space)
@@ -44,7 +44,7 @@ namespace Run_SFML
 
         static void Main(string[] args)
         {
-	        window = new RenderWindow(new VideoMode(Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT), "Run");
+	        window = new RenderWindow(new VideoMode(Config.WindowWidth, Config.WindowHeight), "Run");
 	        // window.SetFramerateLimit(Config.VIEW_FRAMERATE);
 
 	        mainView = new View(window);
@@ -61,7 +61,7 @@ namespace Run_SFML
 
 		        // View is rocking a VIEW_FRAMERATE framerate (probably 60fps)
 		        // But we're effectively acting only at a FRAMERATE framerate (meaning we're handling things every 3-4 frames)
-		        if (mainView.frameSkip < Config.VIEW_FRAMERATE / Config.FRAMERATE - 1) mainView.frameSkip++;
+		        if (mainView.frameSkip < Config.ViewFramerate / Config.Framerate - 1) mainView.frameSkip++;
 		        else
 		        {
 			        mainView.field.applySpritesPosition();

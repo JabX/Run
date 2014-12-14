@@ -33,7 +33,7 @@ namespace Run
                         yData.Add(x, new Tuple<char, char>((char)element[0], (char)element[1]));
                     x++;
                 }
-                buffer.Add(Config.SEQUENCE_HEIGHT - 1 - y, yData);
+                buffer.Add(Config.SequenceHeight - 1 - y, yData);
                 y++;
             }
 
@@ -90,7 +90,7 @@ namespace Run
                 var blockItems = new List<Tuple<uint, uint, char>>(); // <x, y, projectile>
                 var block = new TerrainGrid();
 
-		        int minlength = (int)Config.SEQUENCE_SIZE;
+		        int minlength = (int)Config.SequenceWidth;
 
                 // Constructing our block
                 foreach (var row in blocksData)

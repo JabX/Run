@@ -1,33 +1,10 @@
 ﻿namespace Run
 {
-    public enum SpriteType
-    {
-        PLAYER,
-        OBSTACLE,
-        PROJECTILE,
-        BONUS,
-        UNKNOWN
-    }
+    public enum SpriteType { Player, Obstacle, Projectile, Bonus }
 
-    public enum State
-    {
-        BLUE,
-        GREEN,
-        RED,
-        YELLOW
-    }
+    public enum State { Blue, Green, Red, Yellow }
 
-    public enum Direction
-    {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
+    public enum Direction { Up, Down, Left, Right }
 
-    public enum Way
-    {
-        VERTICAL,
-        HORIZONTAL
-    }
+    public enum Way { Vertical, Horizontal }
 }
