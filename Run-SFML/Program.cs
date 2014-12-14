@@ -23,23 +23,30 @@ namespace Run_SFML
 
         static void OnKeyPressed(object sender, KeyEventArgs e)
         {
-            var player = mainView.field.sprites.Where(sp => sp.type == SpriteType.Player).FirstOrDefault();
-
-            // Jump
-			if (e.Code == Keyboard.Key.Space)
+            if (mainView.field.isGameRunning)
             {
-			    SpriteAction jump = new Jump();
-				if(player.actions.FindIndex(action => action.GetType() == typeof(Jump)) == -1)
-                    player.addAction(jump);				
-			}
+                var player = mainView.field.sprites.Where(sp => sp.type == SpriteType.Player).FirstOrDefault();
 
-			// Fire
-			if (e.Code == Keyboard.Key.E)
+                // Jump
+                if (e.Code == Keyboard.Key.Space)
+                {
+                    SpriteAction jump = new Jump();
+                    if (player.actions.FindIndex(action => action.GetType() == typeof(Jump)) == -1)
+                        player.addAction(jump);
+                }
+
+                // Fire
+                if (e.Code == Keyboard.Key.E)
+                {
+                    SpriteAction fire = new FireProjectile();
+                    if (player.actions.FindIndex(action => action.GetType() == typeof(FireProjectile)) == -1)
+                        player.addAction(fire);
+                }
+            }
+            else
             {
-                SpriteAction fire = new FireProjectile();
-                if (player.actions.FindIndex(action => action.GetType() == typeof(FireProjectile)) == -1)
-                    player.addAction(fire);	
-			}
+                mainView = new View(window);
+            }
 		}
 
         static void Main(string[] args)
@@ -57,21 +64,24 @@ namespace Run_SFML
 
 	        while (window.IsOpen())
 	        {
-		        window.DispatchEvents();
+                window.DispatchEvents();
 
-		        // View is rocking a VIEW_FRAMERATE framerate (probably 60fps)
-		        // But we're effectively acting only at a FRAMERATE framerate (meaning we're handling things every 3-4 frames)
-		        if (mainView.frameSkip < Config.ViewFramerate / Config.Framerate - 1) mainView.frameSkip++;
-		        else
-		        {
-			        mainView.field.applySpritesPosition();
-			        //mainView.field.executeCollisions();
+                if (mainView.field.isGameRunning)
+                {
+                    // View is rocking a VIEW_FRAMERATE framerate (probably 60fps)
+                    // But we're effectively acting only at a FRAMERATE framerate (meaning we're handling things every 3-4 frames)
+                    if (mainView.frameSkip < Config.ViewFramerate / Config.Framerate - 1) mainView.frameSkip++;
+                    else
+                    {
+                        mainView.field.applySpritesPosition();
+                        mainView.field.executeCollisions();
 
-			        mainView.field.executeSpriteActions();
-			        mainView.field.executeFieldActions();
-			
-			        mainView.frameSkip = 0;
-		        }
+                        mainView.field.executeSpriteActions();
+                        mainView.field.executeFieldActions();
+
+                        mainView.frameSkip = 0;
+                    }
+                }
 
 		        // Redraw and display current frame
 		        mainView.draw();

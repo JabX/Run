@@ -9,21 +9,25 @@ namespace Run
 {
     public class Field
     {
+        public bool isGameRunning { get; set; }
+
 	    public List<Sprite> sprites { get; private set; }
 	    public List<FieldAction> actions { get; private set; }
 
         public uint speed { get; private set; }
 
-        // public CollisionHandler collisionHandler { get; set; }
+        public CollisionHandler collisionHandler { get; set; }
 
         public Dictionary<uint, List<List<TerrainGrid>>> sequences { get; set; }
 
 	    public Field()
         {
+            isGameRunning = true;
+
             speed = Config.BaseSpeed;
             sprites = new List<Sprite>();
             actions = new List<FieldAction>();
-            // collisionHandler = new CollisionHandler(this);
+            collisionHandler = new CollisionHandler(this);
 
             sequences = new Dictionary<uint, List<List<TerrainGrid>>>();
 
@@ -146,6 +150,11 @@ namespace Run
             sprites.Add(sprite);
         }
 
+        public void deleteSprite(Sprite sprite)
+        {
+            sprites.Remove(sprite);
+        }
+
         public void deleteOutOfBoundSprites()
         {
             sprites.RemoveAll(sprite => 
@@ -190,16 +199,16 @@ namespace Run
 	        }
         }
 
-        /* public void executeCollisions()
+        public void executeCollisions()
         {
-            for (uint index1 = 0; index1 < sprites.Count; index1++)
-		        for (uint index2 = index1 + 1; index2 < sprites.Count; index2++) 
+            for (int index1 = 0; index1 < sprites.Count; index1++)
+		        for (int index2 = index1 + 1; index2 < sprites.Count; index2++) 
                 {
-			        uint indexDifference = index2 - index1;
+			        int indexDifference = index2 - index1;
 			        if (indexDifference > 0)
-				        collisionHandler.executeCollider(sprites[index1], sprites[index2]);
+				        collisionHandler.collide(sprites[index1], sprites[index2]);
 		        }
-        } */
+        }
 
         public int updateScore()
         {
