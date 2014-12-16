@@ -2,8 +2,9 @@
 using System.Diagnostics;
 using CocosSharp;
 using Run;
+using Run.CocosSharp.Shared;
 
-namespace Run_CocosSharp
+namespace Run.CocosSharp.Win32
 {
     static class Program
     {

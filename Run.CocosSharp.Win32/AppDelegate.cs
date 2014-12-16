@@ -1,9 +1,6 @@
-﻿using System.Reflection;
-using Microsoft.Xna.Framework;
-using CocosDenshion;
-using CocosSharp;
+﻿using CocosSharp;
 
-namespace Run_CocosSharp
+namespace Run.CocosSharp.Shared
 {
     public class AppDelegate : CCApplicationDelegate
     {
@@ -20,7 +17,7 @@ namespace Run_CocosSharp
             application.ContentSearchPaths.Add("SD");
 
             CCScene scene = new CCScene(mainWindow);
-            CCLayer layer = new View(DefaultResolution);
+            CCLayer layer = new Game(DefaultResolution);
 
             scene.AddChild(layer);
 

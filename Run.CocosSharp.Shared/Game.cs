@@ -7,11 +7,11 @@ using Run.Sprites;
 using Run.Actions;
 using Run.Actions.SpriteActions;
 
-namespace Run_CocosSharp
+namespace Run.CocosSharp.Shared
 {
-    public class View : CCLayerColor
+    public class Game : CCLayerColor
     {
-        public View(CCSize size) : base(size)
+        public Game(CCSize size) : base(size)
 		{
 
 		}

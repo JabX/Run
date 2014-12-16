@@ -84,9 +84,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Run-Shared\Run-Shared.csproj">
+    <ProjectReference Include="..\Run.Shared\Run.Shared.csproj">
       <Project>{af3129b3-e1bd-4cd7-8ab7-ef6fc06b93db}</Project>
-      <Name>Run-Shared</Name>
+      <Name>Run.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
