@@ -96,7 +96,16 @@ namespace Run_CocosSharp
                         color.G = 255;
                         break;
                 }
-                
+
+                if(sprite.type == SpriteType.Obstacle)
+                {
+                    if (color.R == 0)
+                        color.R = (byte)(255 * (3 - sprite.hp) / 3);
+                    color.G = (byte)(255 * (3 - sprite.hp) / 3);
+                    if (color.B == 0)
+                        color.B = (byte)(255 * (3 - sprite.hp) / 3);
+                }
+
                 if(sprite.type == SpriteType.Projectile)
                 {
                     var projectile = (Projectile)sprite;
