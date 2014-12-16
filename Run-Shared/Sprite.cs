@@ -15,13 +15,15 @@ namespace Run
         public uint height { get; set; }
         public State state { get; set; }
         public SpriteType type { get; private set; }
+        public int hp { get; set; }
         public List<SpriteAction> actions { get; private set; }
 
-        public Sprite(uint width, uint height, SpriteType type, int x = 0, int y = 0, State state = State.Blue)
+        public Sprite(uint width, uint height, SpriteType type, int x = 0, int y = 0, State state = State.Blue, int hp = 1)
         {
             this.width = width;
             this.height = height;
             this.type = type;
+            this.hp = hp;
             this.x = x;
             this.y = y;
             nx = x;

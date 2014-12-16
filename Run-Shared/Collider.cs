@@ -11,6 +11,10 @@ namespace Run
             this.signature = signature;
         }
 
-        public abstract void collide(Sprite sp1, Sprite sp2, Field target);
+        public virtual void collide(Sprite sp1, Sprite sp2, Field target)
+        {
+            sp1.hp -= 1;
+            sp2.hp -= 1;
+        }
     }
 }

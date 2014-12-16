@@ -47,6 +47,7 @@
     <Compile Include="Collider.cs" />
     <Compile Include="Colliders\PlayerObstacle.cs" />
     <Compile Include="Colliders\PlayerProjectile.cs" />
+    <Compile Include="Colliders\ProjectileObstacle.cs" />
     <Compile Include="CollisionHandler.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Field.cs" />

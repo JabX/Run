@@ -13,7 +13,7 @@
         public static uint BaseSpeed = 2;
         public static uint MaxSpeed = 3;
 
-        public static uint ProjectileSpeed = 8;
+        public static uint ProjectileSpeed = 6;
 
         public static uint SequenceWidth = 30;
         public static uint SequenceHeight = 7;

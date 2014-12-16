@@ -215,6 +215,11 @@ namespace Run
 			        if (indexDifference > 0)
 				        collisionHandler.collide(sprites[index1], sprites[index2]);
 		        }
+
+            sprites.RemoveAll(sprite => sprite.hp <= 0);
+
+            if (sprites.Where(sp => sp.type == SpriteType.Player).FirstOrDefault() == null)
+                isGameRunning = false;
         }
     }
 }
